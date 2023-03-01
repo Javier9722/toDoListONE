@@ -5,7 +5,6 @@ export const Form = () => {
   const [ciclo, setCiclo] = useState(0);
   const [render, setRender] = useState(false);
 
-  const text = "prueba tipeo.......";
   const actividades = [
     "Tareas.....",
     "Trabajos.....",
@@ -74,10 +73,10 @@ export const Form = () => {
   }, [ciclo, render]);
 
   return (
-    <form onSubmit={(e) => preventDefault()}>
+    <form onSubmit={(e) => e.preventDefault()}>
       <input id="task" type="text" placeholder="" onChange={validateInput} />
       <button type="submit">
-        Add <AiFillFileAdd />
+        <AiFillFileAdd />
       </button>
     </form>
   );

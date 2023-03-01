@@ -19,7 +19,7 @@ export const Card = () => {
   return (
     <>
       <ThemeToggle setEstado={setEstado} />
-      <div className="bg-slate-500/50">
+      <div className="bg-slate-500/50 grid justify-items-center">
         {delay ? <Img estado={estado} /> : <></>}
         <Form />
       </div>
