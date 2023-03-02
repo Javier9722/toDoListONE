@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { AiFillFileAdd } from "react-icons/ai";
+import { BsFillPlusSquareFill } from "react-icons/bs";
 
 export const Form = () => {
   const [ciclo, setCiclo] = useState(0);
@@ -73,10 +73,19 @@ export const Form = () => {
   }, [ciclo, render]);
 
   return (
-    <form onSubmit={(e) => e.preventDefault()}>
-      <input id="task" type="text" placeholder="" onChange={validateInput} />
+    <form
+      onSubmit={(e) => e.preventDefault()}
+      className="flex gap-2 items-center"
+    >
+      <input
+        id="task"
+        type="text"
+        placeholder=""
+        onChange={validateInput}
+        className="bg-slate-50 text-slate-800 dark:bg-slate-700 dark:text-slate-300  transition-colors duration-1000 px-2 py-1 rounded-md"
+      />
       <button type="submit">
-        <AiFillFileAdd />
+        <BsFillPlusSquareFill className="text-2xl text-[#ff5d01] dark:text-slate-300 transition-colors duration-1000" />
       </button>
     </form>
   );

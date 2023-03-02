@@ -37,7 +37,7 @@ export const Img = ({ estado }) => {
     <img
       src={url}
       alt="Logo"
-      className={`w-24 transition-opacity duration-300 ease-in ${
+      className={`w-24 transition-opacity duration-500 ${
         opacity ? "opacity-100" : "opacity-0"
       }`}
     />

@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { Form } from "./Form";
 import { Img } from "./Img";
+import { Tasks } from "./Tasks";
 import ThemeToggle from "./ThemeToggleButton";
 
 export const Card = () => {
@@ -19,9 +20,10 @@ export const Card = () => {
   return (
     <>
       <ThemeToggle setEstado={setEstado} />
-      <div className="bg-slate-500/50 grid justify-items-center">
+      <div className="bg-slate-100 dark:bg-slate-900 transition-colors duration-1000 p-2 rounded-xl grid justify-items-center text-slate-800 dark:text-slate-300 gap-2">
         {delay ? <Img estado={estado} /> : <></>}
         <Form />
+        <Tasks />
       </div>
     </>
   );
