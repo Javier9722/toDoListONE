@@ -1,9 +1,10 @@
 import React, { useEffect, useState } from "react";
 import { BsFillPlusSquareFill } from "react-icons/bs";
+import { Checked } from "./itemsForm/Checked";
 
-export const Form = () => {
+export const Form = ({ estado }) => {
   const [ciclo, setCiclo] = useState(0);
-  const [render, setRender] = useState(false);
+  const [renderph, setRenderph] = useState(false);
 
   const actividades = [
     "Tareas.....",
@@ -17,7 +18,7 @@ export const Form = () => {
   const capInput = () => document.querySelector("#task");
 
   const phPrint = (value) => {
-    setRender(true);
+    setRenderph(true);
     const input = capInput();
     let indiceString = 0;
     let newPh = "";
@@ -56,9 +57,9 @@ export const Form = () => {
   const validateInput = (e) => {
     const capValue = e.target.value;
     if (capValue !== "") {
-      setRender(false);
+      setRenderph(false);
     } else {
-      setRender(true);
+      setRenderph(true);
     }
   };
 
@@ -67,16 +68,19 @@ export const Form = () => {
   }, []);
 
   useEffect(() => {
-    if (render === true) {
+    if (renderph === true) {
       phPrint(actividades[ciclo]);
     }
-  }, [ciclo, render]);
+  }, [ciclo, renderph]);
+
+  //on submit
+  const save = (e) => {
+    e.preventDefault();
+    console.log(e.target[0].value);
+  };
 
   return (
-    <form
-      onSubmit={(e) => e.preventDefault()}
-      className="flex gap-2 items-center"
-    >
+    <form onSubmit={save} className="flex gap-2 items-center">
       <input
         id="task"
         type="text"
@@ -84,6 +88,7 @@ export const Form = () => {
         onChange={validateInput}
         className="bg-slate-50 text-slate-800 dark:bg-slate-700 dark:text-slate-300  transition-colors duration-1000 px-2 py-1 rounded-md"
       />
+      <Checked estado={estado} />
       <button type="submit">
         <BsFillPlusSquareFill className="text-2xl text-[#ff5d01] dark:text-slate-300 transition-colors duration-1000" />
       </button>
