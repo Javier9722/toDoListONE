@@ -62,10 +62,12 @@ export const Form = ({ estado, update, setUpdate }) => {
       setRenderph(true);
     }
   };
+  // chequear storage
   const storageCheked = () => localStorage.getItem("task");
-
+  //
   useEffect(() => {
     setTimeout(() => phPrint(actividades[ciclo]), 2000);
+    // validar el storage al renderizar el componente
     if (storageCheked() === null) {
       localStorage.setItem("task", "[]");
     }
@@ -84,11 +86,15 @@ export const Form = ({ estado, update, setUpdate }) => {
       info: e.target[0].value,
       important: e.target[1].checked,
     };
-    const dataString = storageCheked();
-    const dataArray = JSON.parse(dataString);
-    dataArray.push(newTask);
-    localStorage.setItem("task", JSON.stringify(dataArray));
-    setUpdate(update === 0 ? 1 : 0);
+    if (newTask.info !== "") {
+      if (newTask.info[0] !== " ") {
+        const dataString = storageCheked();
+        const dataArray = JSON.parse(dataString);
+        dataArray.push(newTask);
+        localStorage.setItem("task", JSON.stringify(dataArray));
+        setUpdate(update === 0 ? 1 : 0);
+      }
+    }
   };
 
   return (
