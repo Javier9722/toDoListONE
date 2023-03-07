@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { BsFillPlusSquareFill } from "react-icons/bs";
 import { Checked } from "./itemsForm/Checked";
 
-export const Form = ({ estado }) => {
+export const Form = ({ estado, update, setUpdate }) => {
   const [ciclo, setCiclo] = useState(0);
   const [renderph, setRenderph] = useState(false);
 
@@ -62,9 +62,13 @@ export const Form = ({ estado }) => {
       setRenderph(true);
     }
   };
+  const storageCheked = () => localStorage.getItem("task");
 
   useEffect(() => {
     setTimeout(() => phPrint(actividades[ciclo]), 2000);
+    if (storageCheked() === null) {
+      localStorage.setItem("task", "[]");
+    }
   }, []);
 
   useEffect(() => {
@@ -76,7 +80,15 @@ export const Form = ({ estado }) => {
   //on submit
   const save = (e) => {
     e.preventDefault();
-    console.log(e.target[0].value);
+    const newTask = {
+      info: e.target[0].value,
+      important: e.target[1].checked,
+    };
+    const dataString = storageCheked();
+    const dataArray = JSON.parse(dataString);
+    dataArray.push(newTask);
+    localStorage.setItem("task", JSON.stringify(dataArray));
+    setUpdate(update === 0 ? 1 : 0);
   };
 
   return (
