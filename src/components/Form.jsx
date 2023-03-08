@@ -82,14 +82,18 @@ export const Form = ({ estado, update, setUpdate }) => {
   //on submit
   const save = (e) => {
     e.preventDefault();
-    const newTask = {
-      info: e.target[0].value,
-      important: e.target[1].checked,
-    };
-    if (newTask.info !== "") {
-      if (newTask.info[0] !== " ") {
+
+    const info = e.target[0].value;
+    if (info !== "") {
+      if (info[0] !== " ") {
         const dataString = storageCheked();
         const dataArray = JSON.parse(dataString);
+        const newTask = {
+          id: dataArray.length,
+          info: info,
+          important: e.target[1].checked,
+        };
+
         dataArray.push(newTask);
         localStorage.setItem("task", JSON.stringify(dataArray));
         setUpdate(update === 0 ? 1 : 0);

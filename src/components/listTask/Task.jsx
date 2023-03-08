@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from "react";
 import { Checkbox } from "@mui/material";
 import { pink, orange } from "@mui/material/colors";
-import { AiOutlineCloseCircle } from "react-icons/ai";
+import { Delete } from "./taskItems/Delete";
 
-export const Task = ({ task, estado }) => {
+export const Task = ({ task, estado, update, setUpdate }) => {
   const [render, setRender] = useState(false);
   // reutilizando hooks del componente Checked.jsx
   const [opacity, setOpacity] = useState(false);
@@ -63,7 +63,7 @@ export const Task = ({ task, estado }) => {
   ///
 
   return render ? (
-    <li className="flex justify-between items-center">
+    <li className="flex justify-between items-center" id={`task-${task.id}`}>
       <div className="flex items-center">
         <div
           className={`transition-opacity duration-500 ${
@@ -76,12 +76,12 @@ export const Task = ({ task, estado }) => {
       </div>
       {task.important ? (
         <div className="text-pink-600 dark:text-[#ff5d01] transition-colors duration-1000">
-          important!
+          important!xd
         </div>
       ) : (
         <></>
       )}
-      <AiOutlineCloseCircle className="cursor-pointer" />
+      <Delete update={update} setUpdate={setUpdate} taskId={task.id} />
     </li>
   ) : (
     <></>
