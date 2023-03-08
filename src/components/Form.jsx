@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from "react";
-import { BsFillPlusSquareFill } from "react-icons/bs";
 import { Checked } from "./itemsForm/Checked";
 
 export const Form = ({ estado, update, setUpdate }) => {
@@ -114,7 +113,7 @@ export const Form = ({ estado, update, setUpdate }) => {
       />
       <Checked estado={estado} />
       <button type="submit">
-        <BsFillPlusSquareFill className="text-2xl text-[#ff5d01] dark:text-slate-300 transition-colors duration-1000" />
+        <i class="fas fa-plus-square text-2xl text-[#ff5d01] dark:text-slate-300 transition-colors duration-1000"></i>
       </button>
     </form>
   );

@@ -1,5 +1,4 @@
-import React, { useEffect } from "react";
-import { AiOutlineCloseCircle } from "react-icons/ai";
+import React from "react";
 
 export const Delete = ({ update, setUpdate, taskId }) => {
   const obtenerData = () => localStorage.getItem("task");
@@ -19,7 +18,10 @@ export const Delete = ({ update, setUpdate, taskId }) => {
 
   return (
     <div>
-      <AiOutlineCloseCircle className="cursor-pointer" onClick={deleteTask} />
+      <i
+        className="far fa-times-circle cursor-pointer"
+        onClick={deleteTask}
+      ></i>
     </div>
   );
 };

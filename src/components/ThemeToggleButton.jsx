@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from "react";
-import { IoIosMoon, IoIosSunny } from "react-icons/io";
 import { Logo } from "./Logo";
 
 const themes = ["light", "dark"];
@@ -41,7 +40,7 @@ export default function ThemeToggle({ setEstado }) {
   }, []);
 
   return isMounted ? (
-    <div className="inline-flex items-center p-[1px] rounded-3xl bg-orange-300 dark:bg-zinc-600 absolute top-0 left-0">
+    <div className="inline-flex items-center rounded-xl bg-orange-300 dark:bg-zinc-600 overflow-hidden absolute top-1 left-1">
       {themes.map((t) => {
         const checked = t === theme;
         return (
@@ -49,11 +48,15 @@ export default function ThemeToggle({ setEstado }) {
             key={t}
             className={`${
               checked ? "bg-white text-black" : ""
-            } cursor-pointer rounded-3xl p-2`}
+            } cursor-pointer p-1`}
             onClick={toggleTheme}
             aria-label="Toggle theme"
           >
-            {t === "light" ? <IoIosSunny /> : <IoIosMoon />}
+            {t === "light" ? (
+              <i class="fal fa-sun"></i>
+            ) : (
+              <i class="fas fa-moon"></i>
+            )}
           </button>
         );
       })}
