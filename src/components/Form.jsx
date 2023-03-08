@@ -97,6 +97,8 @@ export const Form = ({ estado, update, setUpdate }) => {
         dataArray.push(newTask);
         localStorage.setItem("task", JSON.stringify(dataArray));
         setUpdate(update === 0 ? 1 : 0);
+        const element = capInput();
+        element.value = "";
       }
     }
   };

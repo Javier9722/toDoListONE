@@ -76,7 +76,7 @@ export const Task = ({ task, estado, update, setUpdate }) => {
       </div>
       {task.important ? (
         <div className="text-pink-600 dark:text-[#ff5d01] transition-colors duration-1000">
-          important!xd
+          important!
         </div>
       ) : (
         <></>
